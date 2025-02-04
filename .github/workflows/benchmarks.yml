@@ -39,6 +39,8 @@ jobs:
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
         restore-keys: |
           ${{ runner.os }}-nuget-
+    - name: Install wget
+      run: sudo apt-get update && sudo apt-get install -y wget
 
       # Step 2: Install .NET 9.0.0 runtime manually
     - name: Install .NET 9.0.0 runtime
