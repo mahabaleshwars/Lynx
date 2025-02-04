@@ -15,7 +15,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest, macOS-13]
+        os: [ubuntu-latest]
+        # , windows-latest, macOS-latest, macOS-13
       fail-fast: false
 
     env:
@@ -38,7 +39,9 @@ jobs:
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
         restore-keys: |
           ${{ runner.os }}-nuget-
-
+    - name: List Runtimes
+      run: dotnet --list-runtimes
+      
     - name: Build
       run: dotnet build -c Release
       working-directory: ./src/Lynx.Benchmark
