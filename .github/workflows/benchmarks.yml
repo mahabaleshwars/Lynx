@@ -40,7 +40,10 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-nuget-
     - name: List Runtimes
-      run: dotnet --list-runtimes
+      run: |
+            sudo apt-get update
+            sudo apt-get install dotnet-runtime-9.0
+
       
     - name: Build
       run: dotnet build -c Release
