@@ -2,11 +2,11 @@ name: Benchmarks
 
 on:
   workflow_dispatch:
-    inputs:
-      benchmark_name:
-        description: 'Benchmark name'
-        default: '*'
-        required: false
+    # inputs:
+    #   benchmark_name:
+    #     description: 'Benchmark name'
+    #     default: '*'
+    #     required: false
 
 jobs:
 
