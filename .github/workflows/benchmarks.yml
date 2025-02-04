@@ -39,10 +39,10 @@ jobs:
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
         restore-keys: |
           ${{ runner.os }}-nuget-
-    - name: List Runtimes
-      run: |
-            sudo apt-get update
-            sudo apt-get install dotnet-runtime-9.0
+    # - name: List Runtimes
+    #   run: |
+    #         sudo apt-get update
+    #         sudo apt-get install dotnet-runtime-9.0
 
       
     - name: Build
