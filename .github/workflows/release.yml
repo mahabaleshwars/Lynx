@@ -3,31 +3,31 @@ name: Release
 on:
 
   workflow_dispatch:
-    inputs:
-      new_engine_version:
-        description: 'New engine version. If empty, run number will be used and no commit/tag/release will be created'
-        default: ''
-        required: false
-      should_push_new_nuget_version:
-        description: 'Push new NuGet version'
-        type: boolean
-        default: true
-        required: false
-      should_commit_new_version:
-        description: 'Commit and push version increment. If true, this new commit will be the one tagged (in case Tag version release is also set to true)'
-        type: boolean
-        default: true
-        required: false
-      should_tag_new_version:
-        description: 'Tag version release. If false, no release will be created either'
-        type: boolean
-        default: true
-        required: false
-      should_create_github_release:
-        description: 'Create GitHub Release'
-        type: boolean
-        default: true
-        required: false
+    # inputs:
+    #   new_engine_version:
+    #     description: 'New engine version. If empty, run number will be used and no commit/tag/release will be created'
+    #     default: ''
+    #     required: false
+    #   should_push_new_nuget_version:
+    #     description: 'Push new NuGet version'
+    #     type: boolean
+    #     default: true
+    #     required: false
+    #   should_commit_new_version:
+    #     description: 'Commit and push version increment. If true, this new commit will be the one tagged (in case Tag version release is also set to true)'
+    #     type: boolean
+    #     default: true
+    #     required: false
+    #   should_tag_new_version:
+    #     description: 'Tag version release. If false, no release will be created either'
+    #     type: boolean
+    #     default: true
+    #     required: false
+    #   should_create_github_release:
+    #     description: 'Create GitHub Release'
+    #     type: boolean
+    #     default: true
+    #     required: false
 
 env:
   DOTNET_VERSION: 9.0.x
