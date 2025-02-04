@@ -2,19 +2,19 @@ name: Perft
 
 on:
   workflow_dispatch:
-    inputs:
-      fen:
-        description: 'fen'
-        required: true
-        default: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
-      depth:
-        description: 'depth'
-        required: true
-      divide:
-        description: 'Run also divide'
-        required: false
-        default: false
-        type: boolean
+    # inputs:
+    #   fen:
+    #     description: 'fen'
+    #     required: true
+    #     default: 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+    #   depth:
+    #     description: 'depth'
+    #     required: true
+    #   divide:
+    #     description: 'Run also divide'
+    #     required: false
+    #     default: false
+    #     type: boolean
 
 jobs:
 
