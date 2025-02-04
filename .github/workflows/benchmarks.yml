@@ -39,11 +39,15 @@ jobs:
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
         restore-keys: |
           ${{ runner.os }}-nuget-
-    # - name: List Runtimes
-    #   run: |
-    #         sudo apt-get update
-    #         sudo apt-get install dotnet-runtime-9.0
 
+      # Step 2: Install .NET 9.0.0 runtime manually
+    - name: Install .NET 9.0.0 runtime
+      run: |
+          # Download .NET 9.0.0 runtime from the given URL
+          wget -q https://aka.ms/dotnet-core-applaunch?framework=Microsoft.NETCore.App&framework_version=9.0.0&arch=x64&rid=ubuntu.24.04-x64&os=ubuntu.24.04 -O dotnet-runtime-9.0.0.tar.gz
+
+          # Extract the downloaded file
+          tar -xzf dotnet-runtime-9.0.0.tar.gz -C /usr/share/dotnet
       
     - name: Build
       run: dotnet build -c Release
