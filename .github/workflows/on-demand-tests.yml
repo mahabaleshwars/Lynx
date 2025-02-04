@@ -2,11 +2,11 @@ name: On demand tests
 
 on:
   workflow_dispatch:
-    inputs:
-      test_pattern:
-        description: 'Test --filter pattern'
-        default: '*'
-        required: false
+    # inputs:
+    #   test_pattern:
+    #     description: 'Test --filter pattern'
+    #     default: '*'
+    #     required: false
 
 jobs:
 
