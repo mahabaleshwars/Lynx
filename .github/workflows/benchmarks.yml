@@ -30,9 +30,6 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: Listing runtimes
-      run: dotnet --list-runtimes
-
     - name: Nuget cache
       uses: actions/cache@v4
       with:
