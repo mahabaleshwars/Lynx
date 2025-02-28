@@ -31,7 +31,15 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     
     - name: Listing runtimes
-      run: dotnet --list-runtimes
+      run: |
+            dotnet --list-runtimes
+            echo $DOTNET_ROOT
+            echo $PATH
+    - name: Sudo Listing runtimes
+      run: |
+            sudo dotnet --list-runtimes
+            sudo echo $DOTNET_ROOT
+            sudo echo $PATH
 
     - name: Nuget cache
       uses: actions/cache@v4
