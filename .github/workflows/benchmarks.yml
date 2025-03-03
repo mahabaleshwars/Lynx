@@ -54,6 +54,9 @@ jobs:
       run: dotnet build -c Release
       working-directory: ./src/Lynx.Benchmark
 
+    - name: Set DOTNET_ROOT
+      run: echo "DOTNET_ROOT=/usr/share/dotnet" >> $GITHUB_ENV
+
     - name: Run ${{ github.event.inputs.benchmark_name }} benchmark
       if: matrix.os == 'windows-latest'
       run: dotnet run -c Release --no-build --filter '${{ github.event.inputs.benchmark_name }}'
@@ -62,7 +65,6 @@ jobs:
     - name: Run ${{ github.event.inputs.benchmark_name }} benchmark with sudo
       if: matrix.os != 'windows-latest'
       run: |
-            echo $DOTNET_ROOT
             sudo DOTNET_ROOT=/usr/share/dotnet dotnet run -c Release --no-build --filter '${{ github.event.inputs.benchmark_name }}'
       working-directory: ./src/Lynx.Benchmark
 
