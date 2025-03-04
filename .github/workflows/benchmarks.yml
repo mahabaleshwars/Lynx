@@ -67,7 +67,7 @@ jobs:
       run: |
             sudo -E env DOTNET_ROOT=/usr/share/dotnet
             sudo dotnet --version
-            sudo dotnet run -c Release --no-build --filter '${{ github.event.inputs.benchmark_name }}'
+            sudo -E dotnet run -c Release --no-build --filter '${{ github.event.inputs.benchmark_name }}'
       working-directory: ./src/Lynx.Benchmark
 
     - name: 'Upload ${{ matrix.os }} artifacts'
