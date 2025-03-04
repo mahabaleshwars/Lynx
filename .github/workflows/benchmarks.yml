@@ -54,8 +54,19 @@ jobs:
       run: dotnet build -c Release
       working-directory: ./src/Lynx.Benchmark
 
-    - name: Set DOTNET_ROOT
-      run: echo "DOTNET_ROOT=/usr/share/dotnet" >> $GITHUB_ENV
+    - name: Check .NET location (non-sudo)
+      run: |
+        which dotnet
+        dotnet --info
+    - name: Check .NET location (sudo)
+      run: |
+        sudo which dotnet
+        sudo dotnet --info
+
+    - name: Check PATH (non-sudo)
+      run: echo $PATH
+    - name: Check PATH (sudo)
+      run: sudo echo $PATH
 
     - name: Run ${{ github.event.inputs.benchmark_name }} benchmark
       if: matrix.os == 'windows-latest'
@@ -65,9 +76,7 @@ jobs:
     - name: Run ${{ github.event.inputs.benchmark_name }} benchmark with sudo
       if: matrix.os != 'windows-latest'
       run: |
-            sudo -E env DOTNET_ROOT=/usr/share/dotnet
-            sudo dotnet --version
-            sudo -E dotnet run -c Release --no-build --filter '${{ github.event.inputs.benchmark_name }}'
+            sudo  dotnet run -c Release --no-build --filter '${{ github.event.inputs.benchmark_name }}'
       working-directory: ./src/Lynx.Benchmark
 
     - name: 'Upload ${{ matrix.os }} artifacts'
