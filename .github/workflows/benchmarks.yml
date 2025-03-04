@@ -65,7 +65,7 @@ jobs:
     - name: Run ${{ github.event.inputs.benchmark_name }} benchmark with sudo
       if: matrix.os != 'windows-latest'
       run: |
-            sudo export DOTNET_ROOT=/usr/share/dotnet dotnet run -c Release --no-build --filter '${{ github.event.inputs.benchmark_name }}'
+            sudo env DOTNET_ROOT=/usr/share/dotnet dotnet run -c Release --no-build --filter '${{ github.event.inputs.benchmark_name }}'
       working-directory: ./src/Lynx.Benchmark
 
     - name: 'Upload ${{ matrix.os }} artifacts'
