@@ -24,23 +24,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Set DOTNET_INSTALL_DIR and update PATH
+      run: |
+        echo "DOTNET_INSTALL_DIR=/usr/lib/dotnet" >> $GITHUB_ENV
+        echo "DOTNET_ROOT=/usr/lib/dotnet" >> $GITHUB_ENV
+        echo "/usr/lib/dotnet" >> $GITHUB_PATH
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
     
-    - name: Listing runtimes
-      run: |
-            dotnet --list-runtimes
-            echo $DOTNET_ROOT
-            echo $PATH
-    - name: Sudo Listing runtimes
-      run: |
-            sudo dotnet --list-runtimes
-            sudo echo $DOTNET_ROOT
-            sudo echo $PATH
-
     - name: Nuget cache
       uses: actions/cache@v4
       with:
@@ -53,20 +47,6 @@ jobs:
     - name: Build
       run: dotnet build -c Release
       working-directory: ./src/Lynx.Benchmark
-
-    - name: Check .NET location (non-sudo)
-      run: |
-        which dotnet
-        dotnet --info
-    - name: Check .NET location (sudo)
-      run: |
-        sudo which dotnet
-        sudo dotnet --info
-
-    - name: Check PATH (non-sudo)
-      run: echo $PATH
-    - name: Check PATH (sudo)
-      run: sudo echo $PATH
 
     - name: Run ${{ github.event.inputs.benchmark_name }} benchmark
       if: matrix.os == 'windows-latest'
