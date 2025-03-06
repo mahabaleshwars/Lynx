@@ -24,6 +24,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v5
     
     - name: Nuget cache
       uses: actions/cache@v4
