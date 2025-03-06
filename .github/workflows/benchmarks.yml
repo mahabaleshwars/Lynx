@@ -24,30 +24,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-    - name: Verify .NET version
-      run: |
-          sudo dotnet --version
-
-          # Ensure dotnet uses the right version
-    - name: Update dotnet symlink to use .NET 9.0
-      run: |
-          # Check if dotnet is pointing to the right location
-          if [[ $(ls -l /usr/bin/dotnet) != *"/usr/share/dotnet/dotnet"* ]]; then
-            echo "Updating dotnet symlink to use .NET 9.0"
-            sudo ln -sf /usr/share/dotnet/dotnet /usr/bin/dotnet
-          else
-            echo "Symlink is already correct."
-          fi
-
-      # Verify the installed .NET version
-    - name: Verify .NET version
-      run: |
-          sudo dotnet --version
     
     - name: Nuget cache
       uses: actions/cache@v4
