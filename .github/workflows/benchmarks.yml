@@ -24,11 +24,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set DOTNET_INSTALL_DIR and update PATH
-      run: |
-        echo "DOTNET_INSTALL_DIR=/usr/lib/dotnet" >> $GITHUB_ENV
-        echo "DOTNET_ROOT=/usr/lib/dotnet" >> $GITHUB_ENV
-        echo "/usr/lib/dotnet" >> $GITHUB_PATH
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
